@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Bestie ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════ PRELOADER ═══════ -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="heart-loader">
+        <svg viewBox="0 0 24 24" class="loader-heart">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <p class="preloader-text">Preparing something special...</p>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SCREEN 1: WELCOME ═══════ -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-content">
+      <p class="welcome-text" id="welcome-text"></p>
+    </div>
+  </section>
+
+  <!-- ═══════ SCREEN 2: PASSWORD ═══════ -->
+  <section id="screen-password" class="screen">
+    <div class="password-container glass">
+      <h2 class="password-title">Enter the Secret Code</h2>
+      <p class="password-subtitle">Enter birthday date (DDMMYYYY)</p>
+      <div class="password-display" id="password-display">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key key-clear" data-key="clear">Clear</button>
+        <button class="key" data-key="0">0</button>
+        <button class="key key-delete" data-key="delete">⌫</button>
+      </div>
+      <p class="password-error" id="password-error">Wrong code! Try again </p>
+    </div>
+  </section>
+
+  <!-- ═══════ SCREEN 3: POLAROID ═══════ -->
+  <section id="screen-polaroid" class="screen">
+    <div class="particles-container" id="particles-polaroid"></div>
+    <div class="polaroid-wrapper">
+      <div class="polaroid-card">
+        <div class="polaroid-image">
+          <img id="polaroid-photo" src="" alt="Memory">
+        </div>
+        <div class="polaroid-caption">
+          <p id="polaroid-caption-text"></p>
+        </div>
+      </div>
+      <button class="btn-next glass-btn" onclick="App.nextScreen()">
+        Continue <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCREEN 4: BIRTHDAY WISH ═══════ -->
+  <section id="screen-wish" class="screen">
+    <div class="floating-hearts" id="hearts-wish"></div>
+    <div class="wish-content">
+      <h1 class="wish-text" id="wish-text"></h1>
+      <div class="music-controls glass" id="music-controls">
+        <button class="music-btn" id="music-toggle" onclick="App.toggleMusic()">
+          <svg viewBox="0 0 24 24" class="music-icon" id="music-icon">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+          </svg>
+          <span id="music-label">Play Music</span>
+        </button>
+        <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="50" oninput="App.setVolume(this.value)">
+      </div>
+      <button class="btn-next glass-btn" onclick="App.nextScreen()">
+        Continue <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCREEN 5: MEMORY GALLERY ═══════ -->
+  <section id="screen-gallery" class="screen">
+    <h2 class="gallery-title">Our Best Memories</h2>
+    <div class="gallery-grid" id="gallery-grid"></div>
+    <button class="btn-next glass-btn" onclick="App.nextScreen()">
+      Continue <span class="btn-arrow">→</span>
+    </button>
+  </section>
+
+  <!-- ═══════ SCREEN 6: LOVE LETTER ═══════ -->
+  <section id="screen-letter" class="screen">
+    <div class="letter-container glass">
+      <div class="letter-scroll" id="letter-scroll">
+        <div class="letter-content" id="letter-content"></div>
+        <span class="typewriter-cursor">|</span>
+      </div>
+    </div>
+    <button class="btn-next glass-btn" onclick="App.nextScreen()">
+      Continue <span class="btn-arrow">→</span>
+    </button>
+  </section>
+
+  <!-- ═══════ SCREEN 7: SURPRISE GIFT ═══════ -->
+  <section id="screen-gift" class="screen">
+    <div class="gift-container">
+      <p class="gift-hint">Tap the gift to open it 🎁</p>
+      <div class="gift-box" id="gift-box" onclick="App.openGift()">
+        <div class="gift-lid">
+          <div class="gift-bow"></div>
+        </div>
+        <div class="gift-body">
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
+      </div>
+      <div class="gift-message glass" id="gift-message">
+        <p id="gift-message-text"></p>
+        <button class="btn-next glass-btn" onclick="App.nextScreen()">
+          Continue <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SCREEN 8: FINAL ═══════ -->
+  <section id="screen-final" class="screen">
+    <canvas id="fireworks-canvas"></canvas>
+    <div class="floating-hearts" id="hearts-final"></div>
+    <div class="final-content">
+      <h1 class="final-title" id="final-title"></h1>
+      <p class="final-name" id="final-name"></p>
+      <div class="slideshow-container" id="slideshow">
+        <div class="slideshow-track" id="slideshow-track"></div>
+      </div>
+      <div class="footer-love">
+        <p id="footer-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FLOATING MUSIC BUTTON ═══════ -->
+  <button class="floating-music-btn" id="floating-music-btn" onclick="App.toggleMusic()">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="#ff4d6d">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+    <span id="floating-music-label">♪</span>
+  </button>
+
+  <!-- ═══════ AUDIO ═══════ -->
+  <audio id="bg-music" loop preload="auto">
+    <source id="music-source" src="" type="audio/mpeg">
+  </audio>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
